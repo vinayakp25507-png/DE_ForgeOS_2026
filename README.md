@@ -22,10 +22,10 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead | Vaibhav Todi | 2501010479 | vaibhavtodi81 |
+| Member 2 | Riya Todi | 2501010382 | riyat25382-blip  |
+| Member 3 | Vinayak Pachauri | 2501010507 | vinayakp25507-png |
+| Member 4 | Yashmeen | 2501010707 | yashmeeny25707-dev |
 
 **Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
 
