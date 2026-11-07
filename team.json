@@ -1,0 +1,26 @@
+{
+  "team_id": "T0044",
+  "team_name": "ForgeOS",
+  "members": [
+    {
+      "name": "Vaibhav Todi",
+      "roll_no": "2501010491",
+      "github": "vaibhavtodi81"
+    },
+    {
+      "name": "Riya Todi",
+      "roll_no": "2501010382",
+      "github": "riyat25382-blip"
+    },
+    {
+      "name": "Vinayak Pachauri",
+      "roll_no": "2501010507",
+      "github": "vinayakp25507-png"
+    },
+    {
+      "name": "Yashmeen Yashmeen",
+      "roll_no": "2501010707",
+      "github": "yashmeeny25707-dev"
+    }
+  ]
+}
