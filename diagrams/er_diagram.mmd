@@ -1,0 +1,101 @@
+erDiagram
+    USERS {
+        BIGINT user_id PK
+        VARCHAR phone_e164 UK
+        TEXT display_name
+        TEXT about
+        BOOLEAN is_business
+        DATE joined_on
+        TIMESTAMPTZ last_seen_at
+        TEXT status
+    }
+
+    DEVICES {
+        BIGINT device_id PK
+        BIGINT user_id FK
+        TEXT device_type
+        TEXT app_version
+        TIMESTAMPTZ registered_at
+        TIMESTAMPTZ last_active_at
+    }
+
+    CHATS {
+        BIGINT chat_id PK
+        TEXT chat_type
+        TEXT group_name
+        BIGINT created_by FK
+        TIMESTAMPTZ created_at
+    }
+
+    CHAT_MEMBERS {
+        BIGINT chat_id PK, FK
+        BIGINT user_id PK, FK
+        TEXT role
+        TIMESTAMPTZ joined_at
+        TIMESTAMPTZ left_at
+        BOOLEAN is_muted
+    }
+
+    MEDIA {
+        BIGINT media_id PK
+        BIGINT uploader_id FK
+        TEXT media_type
+        TEXT mime_type
+        BIGINT size_bytes
+        CHAR(64) sha256
+        TIMESTAMPTZ uploaded_at
+    }
+
+    MESSAGES {
+        BIGINT message_id PK
+        BIGINT chat_id FK
+        BIGINT sender_id FK
+        BIGINT media_id FK
+        BIGINT reply_to_message_id FK
+        TIMESTAMPTZ sent_at
+        TEXT message_type
+        TEXT body
+        BOOLEAN is_forwarded
+        BOOLEAN is_deleted
+        TIMESTAMPTZ edited_at
+    }
+
+    MESSAGE_RECEIPTS {
+        BIGINT message_id PK, FK
+        BIGINT user_id PK, FK
+        TIMESTAMPTZ delivered_at
+        TIMESTAMPTZ read_at
+    }
+
+    CALLS {
+        BIGINT call_id PK
+        BIGINT chat_id FK
+        BIGINT caller_id FK
+        TEXT call_type
+        TIMESTAMPTZ started_at
+        TIMESTAMPTZ answered_at
+        TIMESTAMPTZ ended_at
+        TEXT status
+    }
+
+    BLOCKED_USERS {
+        BIGINT blocker_id PK, FK
+        BIGINT blocked_id PK, FK
+        TIMESTAMPTZ blocked_at
+    }
+
+    USERS ||--o{ DEVICES : owns
+    USERS ||--o{ CHATS : creates
+    USERS ||--o{ CHAT_MEMBERS : joins
+    CHATS ||--o{ CHAT_MEMBERS : contains
+    USERS ||--o{ MEDIA : uploads
+    USERS ||--o{ MESSAGES : sends
+    CHATS ||--o{ MESSAGES : contains
+    MEDIA o|--o{ MESSAGES : attached_to
+    MESSAGES o|--o{ MESSAGES : replies_to
+    MESSAGES ||--o{ MESSAGE_RECEIPTS : has
+    USERS ||--o{ MESSAGE_RECEIPTS : receives
+    CHATS ||--o{ CALLS : contains
+    USERS ||--o{ CALLS : initiates
+    USERS ||--o{ BLOCKED_USERS : blocker
+    USERS ||--o{ BLOCKED_USERS : blocked
