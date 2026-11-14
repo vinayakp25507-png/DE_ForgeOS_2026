@@ -721,3 +721,31 @@ UPDATE chat_members
 SET left_at = TIMESTAMPTZ '2026-07-01 10:00:00+05:30'
 WHERE chat_id = 20898 AND user_id = 965 AND left_at IS NULL;
 ```
+
+
+## CP1 Database Workflow
+
+Run these commands from the repository root with PostgreSQL available.
+
+1. Create the `whatsapp` database.
+2. Create the schema:
+
+   `psql -v ON_ERROR_STOP=1 -d whatsapp -f sql/01_schema.sql`
+
+3. Load the seed data:
+
+   `psql -v ON_ERROR_STOP=1 -d whatsapp -f sql/02_load_data.sql`
+
+4. Run data validation:
+
+   `psql -v ON_ERROR_STOP=1 -d whatsapp -f sql/03_validate_data.sql`
+
+5. Run the constraint audit:
+
+   `psql -v ON_ERROR_STOP=1 -d whatsapp -f sql/04_constraint_audit.sql`
+
+For connection settings and the complete execution procedure, see
+[`docs/CP1_runbook.md`](docs/CP1_runbook.md).
+
+Additional evidence is documented in
+[`docs/03_data_validation.md`](docs/03_data_validation.md).
