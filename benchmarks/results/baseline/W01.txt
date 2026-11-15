@@ -1,0 +1,36 @@
+=== W01 run 1 ===
+Insert on messages  (cost=0.00..0.01 rows=0 width=0) (actual time=0.469..0.470 rows=0.00 loops=1)
+  Buffers: shared hit=50 dirtied=3
+  ->  Result  (cost=0.00..0.01 rows=1 width=122) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.039 ms
+Trigger for constraint messages_chat_id_fkey: time=1.340 calls=1
+Trigger for constraint messages_sender_id_fkey: time=0.255 calls=1
+Trigger for constraint messages_media_id_fkey: time=0.013 calls=1
+Trigger for constraint messages_reply_to_message_id_fkey: time=0.001 calls=1
+Execution Time: 2.091 ms
+=== W01 run 2 ===
+Insert on messages  (cost=0.00..0.01 rows=0 width=0) (actual time=0.125..0.125 rows=0.00 loops=1)
+  Buffers: shared hit=51 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=122) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.036 ms
+Trigger for constraint messages_chat_id_fkey: time=0.191 calls=1
+Trigger for constraint messages_sender_id_fkey: time=0.109 calls=1
+Trigger for constraint messages_media_id_fkey: time=0.010 calls=1
+Trigger for constraint messages_reply_to_message_id_fkey: time=0.001 calls=1
+Execution Time: 0.447 ms
+=== W01 run 3 ===
+Insert on messages  (cost=0.00..0.01 rows=0 width=0) (actual time=0.124..0.124 rows=0.00 loops=1)
+  Buffers: shared hit=51 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=122) (actual time=0.001..0.001 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.036 ms
+Trigger for constraint messages_chat_id_fkey: time=0.193 calls=1
+Trigger for constraint messages_sender_id_fkey: time=0.105 calls=1
+Trigger for constraint messages_media_id_fkey: time=0.010 calls=1
+Trigger for constraint messages_reply_to_message_id_fkey: time=0.001 calls=1
+Execution Time: 0.444 ms
