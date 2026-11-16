@@ -1,0 +1,39 @@
+=== L04 unpartitioned run 1 ===
+Sort  (cost=8.45..8.46 rows=1 width=24) (actual time=0.021..0.022 rows=0.00 loops=1)
+  Sort Key: sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=9
+  ->  Index Scan using idx_messages_large_reply on messages_unpartitioned_large  (cost=0.42..8.44 rows=1 width=24) (actual time=0.010..0.011 rows=0.00 loops=1)
+        Index Cond: (reply_to_message_id = 119989)
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.342 ms
+Execution Time: 0.045 ms
+=== L04 unpartitioned run 2 ===
+Sort  (cost=8.45..8.46 rows=1 width=24) (actual time=0.023..0.024 rows=0.00 loops=1)
+  Sort Key: sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=9
+  ->  Index Scan using idx_messages_large_reply on messages_unpartitioned_large  (cost=0.42..8.44 rows=1 width=24) (actual time=0.012..0.012 rows=0.00 loops=1)
+        Index Cond: (reply_to_message_id = 119989)
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.271 ms
+Execution Time: 0.046 ms
+=== L04 unpartitioned run 3 ===
+Sort  (cost=8.45..8.46 rows=1 width=24) (actual time=0.021..0.021 rows=0.00 loops=1)
+  Sort Key: sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=9
+  ->  Index Scan using idx_messages_large_reply on messages_unpartitioned_large  (cost=0.42..8.44 rows=1 width=24) (actual time=0.011..0.011 rows=0.00 loops=1)
+        Index Cond: (reply_to_message_id = 119989)
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.233 ms
+Execution Time: 0.041 ms

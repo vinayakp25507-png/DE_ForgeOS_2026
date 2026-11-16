@@ -1,0 +1,33 @@
+=== L01 unpartitioned run 1 ===
+Limit  (cost=0.42..199.76 rows=50 width=49) (actual time=0.154..0.523 rows=50.00 loops=1)
+  Buffers: shared hit=19 read=37
+  ->  Index Scan using idx_messages_large_chat_sent on messages_unpartitioned_large  (cost=0.42..1036.94 rows=260 width=49) (actual time=0.153..0.519 rows=50.00 loops=1)
+        Index Cond: (chat_id = 22556)
+        Index Searches: 1
+        Buffers: shared hit=19 read=37
+Planning:
+  Buffers: shared hit=143 read=1
+Planning Time: 0.990 ms
+Execution Time: 0.557 ms
+=== L01 unpartitioned run 2 ===
+Limit  (cost=0.42..199.76 rows=50 width=49) (actual time=0.012..0.068 rows=50.00 loops=1)
+  Buffers: shared hit=56
+  ->  Index Scan using idx_messages_large_chat_sent on messages_unpartitioned_large  (cost=0.42..1036.94 rows=260 width=49) (actual time=0.012..0.066 rows=50.00 loops=1)
+        Index Cond: (chat_id = 22556)
+        Index Searches: 1
+        Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=144
+Planning Time: 0.271 ms
+Execution Time: 0.079 ms
+=== L01 unpartitioned run 3 ===
+Limit  (cost=0.42..199.76 rows=50 width=49) (actual time=0.012..0.064 rows=50.00 loops=1)
+  Buffers: shared hit=56
+  ->  Index Scan using idx_messages_large_chat_sent on messages_unpartitioned_large  (cost=0.42..1036.94 rows=260 width=49) (actual time=0.011..0.062 rows=50.00 loops=1)
+        Index Cond: (chat_id = 22556)
+        Index Searches: 1
+        Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=144
+Planning Time: 0.249 ms
+Execution Time: 0.076 ms

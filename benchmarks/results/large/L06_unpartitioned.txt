@@ -1,0 +1,51 @@
+=== L06 unpartitioned run 1 ===
+Limit  (cost=17246.31..17246.36 rows=20 width=16) (actual time=62.310..62.313 rows=20.00 loops=1)
+  Buffers: shared hit=2994 read=4381 written=94
+  ->  Sort  (cost=17246.31..17306.02 rows=23882 width=16) (actual time=62.310..62.312 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=2994 read=4381 written=94
+        ->  HashAggregate  (cost=16372.00..16610.82 rows=23882 width=16) (actual time=60.187..61.418 rows=28413.00 loops=1)
+              Group Key: sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=2991 read=4381 written=94
+              ->  Seq Scan on messages_unpartitioned_large  (cost=0.00..13372.00 rows=600000 width=8) (actual time=0.434..24.430 rows=600000.00 loops=1)
+                    Buffers: shared hit=2991 read=4381 written=94
+Planning:
+  Buffers: shared hit=137
+Planning Time: 0.268 ms
+Execution Time: 62.422 ms
+=== L06 unpartitioned run 2 ===
+Limit  (cost=17246.31..17246.36 rows=20 width=16) (actual time=74.117..74.120 rows=20.00 loops=1)
+  Buffers: shared hit=3088 read=4287
+  ->  Sort  (cost=17246.31..17306.02 rows=23882 width=16) (actual time=74.116..74.117 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=3088 read=4287
+        ->  HashAggregate  (cost=16372.00..16610.82 rows=23882 width=16) (actual time=71.635..73.153 rows=28413.00 loops=1)
+              Group Key: sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=3085 read=4287
+              ->  Seq Scan on messages_unpartitioned_large  (cost=0.00..13372.00 rows=600000 width=8) (actual time=0.662..21.734 rows=600000.00 loops=1)
+                    Buffers: shared hit=3085 read=4287
+Planning:
+  Buffers: shared hit=137
+Planning Time: 0.393 ms
+Execution Time: 74.239 ms
+=== L06 unpartitioned run 3 ===
+Limit  (cost=17246.31..17246.36 rows=20 width=16) (actual time=67.061..67.063 rows=20.00 loops=1)
+  Buffers: shared hit=3182 read=4193 written=84
+  ->  Sort  (cost=17246.31..17306.02 rows=23882 width=16) (actual time=67.061..67.062 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=3182 read=4193 written=84
+        ->  HashAggregate  (cost=16372.00..16610.82 rows=23882 width=16) (actual time=65.005..66.217 rows=28413.00 loops=1)
+              Group Key: sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=3179 read=4193 written=84
+              ->  Seq Scan on messages_unpartitioned_large  (cost=0.00..13372.00 rows=600000 width=8) (actual time=0.036..25.077 rows=600000.00 loops=1)
+                    Buffers: shared hit=3179 read=4193 written=84
+Planning:
+  Buffers: shared hit=137
+Planning Time: 0.250 ms
+Execution Time: 67.132 ms

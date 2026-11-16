@@ -1,0 +1,30 @@
+=== L07 unpartitioned run 1 ===
+Limit  (cost=3828.27..3829.22 rows=25 width=32) (actual time=24.963..24.965 rows=25.00 loops=1)
+  Buffers: shared hit=1337 read=276 written=176
+  ->  Index Scan Backward using messages_unpartitioned_large_pkey on messages_unpartitioned_large  (cost=0.42..22967.47 rows=600000 width=32) (actual time=0.488..23.207 rows=100025.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=1337 read=276 written=176
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.234 ms
+Execution Time: 24.978 ms
+=== L07 unpartitioned run 2 ===
+Limit  (cost=3828.27..3829.22 rows=25 width=32) (actual time=8.494..8.496 rows=25.00 loops=1)
+  Buffers: shared hit=1613
+  ->  Index Scan Backward using messages_unpartitioned_large_pkey on messages_unpartitioned_large  (cost=0.42..22967.47 rows=600000 width=32) (actual time=0.008..6.782 rows=100025.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=1613
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.283 ms
+Execution Time: 8.510 ms
+=== L07 unpartitioned run 3 ===
+Limit  (cost=3828.27..3829.22 rows=25 width=32) (actual time=10.183..10.186 rows=25.00 loops=1)
+  Buffers: shared hit=1613
+  ->  Index Scan Backward using messages_unpartitioned_large_pkey on messages_unpartitioned_large  (cost=0.42..22967.47 rows=600000 width=32) (actual time=0.008..8.290 rows=100025.00 loops=1)
+        Index Searches: 1
+        Buffers: shared hit=1613
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.254 ms
+Execution Time: 10.199 ms

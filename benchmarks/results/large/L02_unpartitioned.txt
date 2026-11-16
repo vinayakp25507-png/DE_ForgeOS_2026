@@ -1,0 +1,63 @@
+=== L02 unpartitioned run 1 ===
+Sort  (cost=8863.03..8863.05 rows=6 width=13) (actual time=12.949..12.949 rows=6.00 loops=1)
+  Sort Key: message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=93 read=460
+  ->  HashAggregate  (cost=8862.89..8862.95 rows=6 width=13) (actual time=12.936..12.936 rows=6.00 loops=1)
+        Group Key: message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=90 read=460
+        ->  Bitmap Heap Scan on messages_unpartitioned_large  (cost=833.39..8698.52 rows=32875 width=5) (actual time=5.533..10.240 rows=32967.00 loops=1)
+              Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Heap Blocks: exact=420
+              Buffers: shared hit=90 read=460
+              ->  Bitmap Index Scan on idx_messages_large_sent  (cost=0.00..825.17 rows=32875 width=0) (actual time=5.433..5.433 rows=32967.00 loops=1)
+                    Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Index Searches: 1
+                    Buffers: shared hit=1 read=129
+Planning:
+  Buffers: shared hit=166
+Planning Time: 0.268 ms
+Execution Time: 12.990 ms
+=== L02 unpartitioned run 2 ===
+Sort  (cost=8863.03..8863.05 rows=6 width=13) (actual time=4.507..4.508 rows=6.00 loops=1)
+  Sort Key: message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=553
+  ->  HashAggregate  (cost=8862.89..8862.95 rows=6 width=13) (actual time=4.493..4.494 rows=6.00 loops=1)
+        Group Key: message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=550
+        ->  Bitmap Heap Scan on messages_unpartitioned_large  (cost=833.39..8698.52 rows=32875 width=5) (actual time=0.600..2.245 rows=32967.00 loops=1)
+              Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Heap Blocks: exact=420
+              Buffers: shared hit=550
+              ->  Bitmap Index Scan on idx_messages_large_sent  (cost=0.00..825.17 rows=32875 width=0) (actual time=0.577..0.577 rows=32967.00 loops=1)
+                    Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Index Searches: 1
+                    Buffers: shared hit=130
+Planning:
+  Buffers: shared hit=166
+Planning Time: 0.312 ms
+Execution Time: 4.553 ms
+=== L02 unpartitioned run 3 ===
+Sort  (cost=8863.03..8863.05 rows=6 width=13) (actual time=5.077..5.078 rows=6.00 loops=1)
+  Sort Key: message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=553
+  ->  HashAggregate  (cost=8862.89..8862.95 rows=6 width=13) (actual time=5.064..5.065 rows=6.00 loops=1)
+        Group Key: message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=550
+        ->  Bitmap Heap Scan on messages_unpartitioned_large  (cost=833.39..8698.52 rows=32875 width=5) (actual time=0.681..2.624 rows=32967.00 loops=1)
+              Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Heap Blocks: exact=420
+              Buffers: shared hit=550
+              ->  Bitmap Index Scan on idx_messages_large_sent  (cost=0.00..825.17 rows=32875 width=0) (actual time=0.656..0.657 rows=32967.00 loops=1)
+                    Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Index Searches: 1
+                    Buffers: shared hit=130
+Planning:
+  Buffers: shared hit=166
+Planning Time: 0.260 ms
+Execution Time: 5.132 ms

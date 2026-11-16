@@ -1,0 +1,78 @@
+=== L05 unpartitioned run 1 ===
+Finalize GroupAggregate  (cost=12122.16..12123.92 rows=6 width=13) (actual time=26.580..27.529 rows=6.00 loops=1)
+  Group Key: message_type
+  Buffers: shared hit=2161 read=5227
+  ->  Gather Merge  (cost=12122.16..12123.79 rows=14 width=13) (actual time=26.576..27.524 rows=18.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=2161 read=5227
+        ->  Sort  (cost=11122.14..11122.15 rows=6 width=13) (actual time=25.299..25.300 rows=6.00 loops=3)
+              Sort Key: message_type
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=2161 read=5227
+              Worker 0:  Sort Method: quicksort  Memory: 25kB
+              Worker 1:  Sort Method: quicksort  Memory: 25kB
+              ->  Partial HashAggregate  (cost=11122.00..11122.06 rows=6 width=13) (actual time=25.287..25.287 rows=6.00 loops=3)
+                    Group Key: message_type
+                    Batches: 1  Memory Usage: 32kB
+                    Buffers: shared hit=2145 read=5227
+                    Worker 0:  Batches: 1  Memory Usage: 32kB
+                    Worker 1:  Batches: 1  Memory Usage: 32kB
+                    ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=5) (actual time=0.342..9.091 rows=200000.00 loops=3)
+                          Buffers: shared hit=2145 read=5227
+Planning:
+  Buffers: shared hit=146
+Planning Time: 0.327 ms
+Execution Time: 27.583 ms
+=== L05 unpartitioned run 2 ===
+Finalize GroupAggregate  (cost=12122.16..12123.92 rows=6 width=13) (actual time=27.918..28.912 rows=6.00 loops=1)
+  Group Key: message_type
+  Buffers: shared hit=2443 read=4945 written=212
+  ->  Gather Merge  (cost=12122.16..12123.79 rows=14 width=13) (actual time=27.914..28.907 rows=18.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=2443 read=4945 written=212
+        ->  Sort  (cost=11122.14..11122.15 rows=6 width=13) (actual time=26.491..26.491 rows=6.00 loops=3)
+              Sort Key: message_type
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=2443 read=4945 written=212
+              Worker 0:  Sort Method: quicksort  Memory: 25kB
+              Worker 1:  Sort Method: quicksort  Memory: 25kB
+              ->  Partial HashAggregate  (cost=11122.00..11122.06 rows=6 width=13) (actual time=26.478..26.479 rows=6.00 loops=3)
+                    Group Key: message_type
+                    Batches: 1  Memory Usage: 32kB
+                    Buffers: shared hit=2427 read=4945 written=212
+                    Worker 0:  Batches: 1  Memory Usage: 32kB
+                    Worker 1:  Batches: 1  Memory Usage: 32kB
+                    ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=5) (actual time=0.235..12.818 rows=200000.00 loops=3)
+                          Buffers: shared hit=2427 read=4945 written=212
+Planning:
+  Buffers: shared hit=146
+Planning Time: 0.261 ms
+Execution Time: 28.961 ms
+=== L05 unpartitioned run 3 ===
+Finalize GroupAggregate  (cost=12122.16..12123.92 rows=6 width=13) (actual time=31.621..32.744 rows=6.00 loops=1)
+  Group Key: message_type
+  Buffers: shared hit=2725 read=4663 written=134
+  ->  Gather Merge  (cost=12122.16..12123.79 rows=14 width=13) (actual time=31.617..32.738 rows=18.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=2725 read=4663 written=134
+        ->  Sort  (cost=11122.14..11122.15 rows=6 width=13) (actual time=30.009..30.010 rows=6.00 loops=3)
+              Sort Key: message_type
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=2725 read=4663 written=134
+              Worker 0:  Sort Method: quicksort  Memory: 25kB
+              Worker 1:  Sort Method: quicksort  Memory: 25kB
+              ->  Partial HashAggregate  (cost=11122.00..11122.06 rows=6 width=13) (actual time=29.996..29.997 rows=6.00 loops=3)
+                    Group Key: message_type
+                    Batches: 1  Memory Usage: 32kB
+                    Buffers: shared hit=2709 read=4663 written=134
+                    Worker 0:  Batches: 1  Memory Usage: 32kB
+                    Worker 1:  Batches: 1  Memory Usage: 32kB
+                    ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=5) (actual time=0.042..13.148 rows=200000.00 loops=3)
+                          Buffers: shared hit=2709 read=4663 written=134
+Planning:
+  Buffers: shared hit=146
+Planning Time: 0.247 ms
+Execution Time: 32.798 ms

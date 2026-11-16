@@ -1,0 +1,81 @@
+=== L08 unpartitioned run 1 ===
+Limit  (cost=16440.89..16441.14 rows=100 width=16) (actual time=36.235..36.266 rows=100.00 loops=1)
+  Buffers: shared hit=3276 read=4099 written=186
+  ->  Sort  (cost=16440.89..16475.70 rows=13922 width=16) (actual time=36.234..36.262 rows=100.00 loops=1)
+        Sort Key: (max(sent_at)) DESC NULLS LAST
+        Sort Method: top-N heapsort  Memory: 31kB
+        Buffers: shared hit=3276 read=4099 written=186
+        ->  Finalize HashAggregate  (cost=15769.58..15908.80 rows=13922 width=16) (actual time=34.573..35.498 rows=21164.00 loops=1)
+              Group Key: chat_id
+              Batches: 1  Memory Usage: 1561kB
+              Buffers: shared hit=3273 read=4099 written=186
+              ->  Gather  (cost=12122.00..15602.52 rows=33413 width=16) (actual time=26.003..29.341 rows=61454.00 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=3273 read=4099 written=186
+                    ->  Partial HashAggregate  (cost=11122.00..11261.22 rows=13922 width=16) (actual time=24.701..25.739 rows=20484.67 loops=3)
+                          Group Key: chat_id
+                          Batches: 1  Memory Usage: 1561kB
+                          Buffers: shared hit=3273 read=4099 written=186
+                          Worker 0:  Batches: 1  Memory Usage: 1561kB
+                          Worker 1:  Batches: 1  Memory Usage: 1561kB
+                          ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=16) (actual time=0.168..10.229 rows=200000.00 loops=3)
+                                Buffers: shared hit=3273 read=4099 written=186
+Planning:
+  Buffers: shared hit=135
+Planning Time: 0.274 ms
+Execution Time: 36.347 ms
+=== L08 unpartitioned run 2 ===
+Limit  (cost=16440.89..16441.14 rows=100 width=16) (actual time=41.921..41.947 rows=100.00 loops=1)
+  Buffers: shared hit=3558 read=3817 written=184
+  ->  Sort  (cost=16440.89..16475.70 rows=13922 width=16) (actual time=41.921..41.943 rows=100.00 loops=1)
+        Sort Key: (max(sent_at)) DESC NULLS LAST
+        Sort Method: top-N heapsort  Memory: 31kB
+        Buffers: shared hit=3558 read=3817 written=184
+        ->  Finalize HashAggregate  (cost=15769.58..15908.80 rows=13922 width=16) (actual time=40.372..41.267 rows=21164.00 loops=1)
+              Group Key: chat_id
+              Batches: 1  Memory Usage: 1561kB
+              Buffers: shared hit=3555 read=3817 written=184
+              ->  Gather  (cost=12122.00..15602.52 rows=33413 width=16) (actual time=32.625..35.570 rows=61010.00 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=3555 read=3817 written=184
+                    ->  Partial HashAggregate  (cost=11122.00..11261.22 rows=13922 width=16) (actual time=30.256..31.345 rows=20336.67 loops=3)
+                          Group Key: chat_id
+                          Batches: 1  Memory Usage: 1561kB
+                          Buffers: shared hit=3555 read=3817 written=184
+                          Worker 0:  Batches: 1  Memory Usage: 1561kB
+                          Worker 1:  Batches: 1  Memory Usage: 1561kB
+                          ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=16) (actual time=0.055..11.764 rows=200000.00 loops=3)
+                                Buffers: shared hit=3555 read=3817 written=184
+Planning:
+  Buffers: shared hit=135
+Planning Time: 0.253 ms
+Execution Time: 42.024 ms
+=== L08 unpartitioned run 3 ===
+Limit  (cost=16440.89..16441.14 rows=100 width=16) (actual time=44.234..44.258 rows=100.00 loops=1)
+  Buffers: shared hit=3840 read=3535 written=282
+  ->  Sort  (cost=16440.89..16475.70 rows=13922 width=16) (actual time=44.234..44.254 rows=100.00 loops=1)
+        Sort Key: (max(sent_at)) DESC NULLS LAST
+        Sort Method: top-N heapsort  Memory: 31kB
+        Buffers: shared hit=3840 read=3535 written=282
+        ->  Finalize HashAggregate  (cost=15769.58..15908.80 rows=13922 width=16) (actual time=42.751..43.588 rows=21164.00 loops=1)
+              Group Key: chat_id
+              Batches: 1  Memory Usage: 1561kB
+              Buffers: shared hit=3837 read=3535 written=282
+              ->  Gather  (cost=12122.00..15602.52 rows=33413 width=16) (actual time=34.761..37.701 rows=61591.00 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=3837 read=3535 written=282
+                    ->  Partial HashAggregate  (cost=11122.00..11261.22 rows=13922 width=16) (actual time=33.485..34.521 rows=20530.33 loops=3)
+                          Group Key: chat_id
+                          Batches: 1  Memory Usage: 1561kB
+                          Buffers: shared hit=3837 read=3535 written=282
+                          Worker 0:  Batches: 1  Memory Usage: 1561kB
+                          Worker 1:  Batches: 1  Memory Usage: 1561kB
+                          ->  Parallel Seq Scan on messages_unpartitioned_large  (cost=0.00..9872.00 rows=250000 width=16) (actual time=0.266..15.001 rows=200000.00 loops=3)
+                                Buffers: shared hit=3837 read=3535 written=282
+Planning:
+  Buffers: shared hit=135
+Planning Time: 0.247 ms
+Execution Time: 44.337 ms
