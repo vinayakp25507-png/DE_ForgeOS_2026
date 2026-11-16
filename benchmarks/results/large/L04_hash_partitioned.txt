@@ -1,0 +1,129 @@
+=== L04 hash_partitioned run 1 ===
+Sort  (cost=66.64..66.66 rows=8 width=24) (actual time=0.057..0.058 rows=0.00 loops=1)
+  Sort Key: messages_hash_partitioned.sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=22
+  ->  Append  (cost=0.29..66.52 rows=8 width=24) (actual time=0.045..0.045 rows=0.00 loops=1)
+        Buffers: shared hit=19
+        ->  Index Scan using messages_hash_partitioned_p0_reply_to_message_id_idx on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..8.31 rows=1 width=24) (actual time=0.009..0.009 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=5
+        ->  Index Scan using messages_hash_partitioned_p1_reply_to_message_id_idx on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p2_reply_to_message_id_idx on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..8.31 rows=1 width=24) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p3_reply_to_message_id_idx on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p4_reply_to_message_id_idx on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p5_reply_to_message_id_idx on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..8.31 rows=1 width=24) (actual time=0.007..0.007 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p6_reply_to_message_id_idx on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p7_reply_to_message_id_idx on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=940
+Planning Time: 1.250 ms
+Execution Time: 0.081 ms
+=== L04 hash_partitioned run 2 ===
+Sort  (cost=66.64..66.66 rows=8 width=24) (actual time=0.060..0.061 rows=0.00 loops=1)
+  Sort Key: messages_hash_partitioned.sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=22
+  ->  Append  (cost=0.29..66.52 rows=8 width=24) (actual time=0.048..0.048 rows=0.00 loops=1)
+        Buffers: shared hit=19
+        ->  Index Scan using messages_hash_partitioned_p0_reply_to_message_id_idx on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..8.31 rows=1 width=24) (actual time=0.010..0.010 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=5
+        ->  Index Scan using messages_hash_partitioned_p1_reply_to_message_id_idx on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p2_reply_to_message_id_idx on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..8.31 rows=1 width=24) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p3_reply_to_message_id_idx on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p4_reply_to_message_id_idx on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p5_reply_to_message_id_idx on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..8.31 rows=1 width=24) (actual time=0.007..0.007 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p6_reply_to_message_id_idx on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p7_reply_to_message_id_idx on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=940
+Planning Time: 2.306 ms
+Execution Time: 0.099 ms
+=== L04 hash_partitioned run 3 ===
+Sort  (cost=66.64..66.66 rows=8 width=24) (actual time=0.055..0.056 rows=0.00 loops=1)
+  Sort Key: messages_hash_partitioned.sent_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=22
+  ->  Append  (cost=0.29..66.52 rows=8 width=24) (actual time=0.042..0.043 rows=0.00 loops=1)
+        Buffers: shared hit=19
+        ->  Index Scan using messages_hash_partitioned_p0_reply_to_message_id_idx on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..8.31 rows=1 width=24) (actual time=0.009..0.009 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=5
+        ->  Index Scan using messages_hash_partitioned_p1_reply_to_message_id_idx on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p2_reply_to_message_id_idx on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..8.31 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p3_reply_to_message_id_idx on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p4_reply_to_message_id_idx on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p5_reply_to_message_id_idx on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..8.31 rows=1 width=24) (actual time=0.006..0.006 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p6_reply_to_message_id_idx on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+        ->  Index Scan using messages_hash_partitioned_p7_reply_to_message_id_idx on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..8.31 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+              Index Cond: (reply_to_message_id = 119989)
+              Index Searches: 1
+              Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=940
+Planning Time: 3.544 ms
+Execution Time: 0.080 ms

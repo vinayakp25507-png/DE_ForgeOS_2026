@@ -1,0 +1,237 @@
+=== L02 hash_partitioned run 1 ===
+Sort  (cost=9011.67..9011.69 rows=6 width=13) (actual time=14.750..14.752 rows=6.00 loops=1)
+  Sort Key: messages_hash_partitioned.message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=524 read=80 written=77
+  ->  HashAggregate  (cost=9011.53..9011.59 rows=6 width=13) (actual time=14.732..14.734 rows=6.00 loops=1)
+        Group Key: messages_hash_partitioned.message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=521 read=80 written=77
+        ->  Append  (cost=101.68..8850.94 rows=32119 width=5) (actual time=1.533..12.517 rows=32967.00 loops=1)
+              Buffers: shared hit=521 read=80 written=77
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=101.68..1085.25 rows=4038 width=5) (actual time=1.533..1.913 rows=4112.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=66 read=10 written=10
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p0_sent_at_idx  (cost=0.00..100.67 rows=4038 width=0) (actual time=1.518..1.518 rows=4112.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=8 read=10 written=10
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=106.09..1096.26 rows=4078 width=5) (actual time=1.306..1.631 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=64 read=9 written=7
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p1_sent_at_idx  (cost=0.00..105.07 rows=4078 width=0) (actual time=1.288..1.288 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=7 read=9 written=7
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=100.32..1076.89 rows=3905 width=5) (actual time=0.710..1.109 rows=3999.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=55
+                    Buffers: shared hit=64 read=9 written=8
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p2_sent_at_idx  (cost=0.00..99.34 rows=3905 width=0) (actual time=0.685..0.685 rows=3999.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=9 read=9 written=8
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=99.88..1072.81 rows=3862 width=5) (actual time=0.984..1.252 rows=4024.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=65 read=11 written=11
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p3_sent_at_idx  (cost=0.00..98.91 rows=3862 width=0) (actual time=0.971..0.971 rows=4024.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=8 read=11 written=11
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=105.44..1083.65 rows=4014 width=5) (actual time=0.981..1.248 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=62 read=12 written=12
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p4_sent_at_idx  (cost=0.00..104.43 rows=4014 width=0) (actual time=0.972..0.972 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=5 read=12 written=12
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=104.55..1080.47 rows=3928 width=5) (actual time=0.750..1.072 rows=4088.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=60
+                    Buffers: shared hit=67 read=11 written=11
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p5_sent_at_idx  (cost=0.00..103.57 rows=3928 width=0) (actual time=0.739..0.739 rows=4088.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=7 read=11 written=11
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=107.37..1096.42 rows=4203 width=5) (actual time=0.835..1.650 rows=4276.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=65 read=10 written=10
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p6_sent_at_idx  (cost=0.00..106.32 rows=4203 width=0) (actual time=0.822..0.822 rows=4276.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=7 read=10 written=10
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=106.23..1098.59 rows=4091 width=5) (actual time=0.909..1.420 rows=4204.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=68 read=8 written=8
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p7_sent_at_idx  (cost=0.00..105.20 rows=4091 width=0) (actual time=0.846..0.846 rows=4204.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=10 read=8 written=8
+Planning:
+  Buffers: shared hit=952
+Planning Time: 1.708 ms
+Execution Time: 14.905 ms
+=== L02 hash_partitioned run 2 ===
+Sort  (cost=9011.67..9011.69 rows=6 width=13) (actual time=7.426..7.433 rows=6.00 loops=1)
+  Sort Key: messages_hash_partitioned.message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=604
+  ->  HashAggregate  (cost=9011.53..9011.59 rows=6 width=13) (actual time=7.409..7.416 rows=6.00 loops=1)
+        Group Key: messages_hash_partitioned.message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=601
+        ->  Append  (cost=101.68..8850.94 rows=32119 width=5) (actual time=0.101..5.225 rows=32967.00 loops=1)
+              Buffers: shared hit=601
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=101.68..1085.25 rows=4038 width=5) (actual time=0.101..0.326 rows=4112.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p0_sent_at_idx  (cost=0.00..100.67 rows=4038 width=0) (actual time=0.091..0.091 rows=4112.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=106.09..1096.26 rows=4078 width=5) (actual time=0.085..0.297 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=73
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p1_sent_at_idx  (cost=0.00..105.07 rows=4078 width=0) (actual time=0.079..0.079 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=16
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=100.32..1076.89 rows=3905 width=5) (actual time=0.077..0.312 rows=3999.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=55
+                    Buffers: shared hit=73
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p2_sent_at_idx  (cost=0.00..99.34 rows=3905 width=0) (actual time=0.069..0.070 rows=3999.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=99.88..1072.81 rows=3862 width=5) (actual time=0.089..0.298 rows=4024.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p3_sent_at_idx  (cost=0.00..98.91 rows=3862 width=0) (actual time=0.081..0.081 rows=4024.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=19
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=105.44..1083.65 rows=4014 width=5) (actual time=0.091..0.311 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=74
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p4_sent_at_idx  (cost=0.00..104.43 rows=4014 width=0) (actual time=0.084..0.085 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=17
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=104.55..1080.47 rows=3928 width=5) (actual time=0.080..0.322 rows=4088.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=60
+                    Buffers: shared hit=78
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p5_sent_at_idx  (cost=0.00..103.57 rows=3928 width=0) (actual time=0.075..0.075 rows=4088.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=107.37..1096.42 rows=4203 width=5) (actual time=0.086..0.369 rows=4276.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=75
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p6_sent_at_idx  (cost=0.00..106.32 rows=4203 width=0) (actual time=0.079..0.079 rows=4276.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=17
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=106.23..1098.59 rows=4091 width=5) (actual time=1.209..1.765 rows=4204.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p7_sent_at_idx  (cost=0.00..105.20 rows=4091 width=0) (actual time=1.082..1.082 rows=4204.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+Planning:
+  Buffers: shared hit=952
+Planning Time: 1.746 ms
+Execution Time: 7.569 ms
+=== L02 hash_partitioned run 3 ===
+Sort  (cost=9011.67..9011.69 rows=6 width=13) (actual time=5.567..5.570 rows=6.00 loops=1)
+  Sort Key: messages_hash_partitioned.message_type
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=604
+  ->  HashAggregate  (cost=9011.53..9011.59 rows=6 width=13) (actual time=5.548..5.551 rows=6.00 loops=1)
+        Group Key: messages_hash_partitioned.message_type
+        Batches: 1  Memory Usage: 32kB
+        Buffers: shared hit=601
+        ->  Append  (cost=101.68..8850.94 rows=32119 width=5) (actual time=0.130..3.898 rows=32967.00 loops=1)
+              Buffers: shared hit=601
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=101.68..1085.25 rows=4038 width=5) (actual time=0.130..0.403 rows=4112.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p0_sent_at_idx  (cost=0.00..100.67 rows=4038 width=0) (actual time=0.115..0.115 rows=4112.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=106.09..1096.26 rows=4078 width=5) (actual time=0.109..0.326 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=73
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p1_sent_at_idx  (cost=0.00..105.07 rows=4078 width=0) (actual time=0.100..0.100 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=16
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=100.32..1076.89 rows=3905 width=5) (actual time=0.082..0.303 rows=3999.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=55
+                    Buffers: shared hit=73
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p2_sent_at_idx  (cost=0.00..99.34 rows=3905 width=0) (actual time=0.072..0.072 rows=3999.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=99.88..1072.81 rows=3862 width=5) (actual time=0.088..0.296 rows=4024.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p3_sent_at_idx  (cost=0.00..98.91 rows=3862 width=0) (actual time=0.081..0.081 rows=4024.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=19
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=105.44..1083.65 rows=4014 width=5) (actual time=0.082..0.300 rows=4132.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=57
+                    Buffers: shared hit=74
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p4_sent_at_idx  (cost=0.00..104.43 rows=4014 width=0) (actual time=0.074..0.074 rows=4132.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=17
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=104.55..1080.47 rows=3928 width=5) (actual time=0.085..0.301 rows=4088.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=60
+                    Buffers: shared hit=78
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p5_sent_at_idx  (cost=0.00..103.57 rows=3928 width=0) (actual time=0.078..0.078 rows=4088.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=107.37..1096.42 rows=4203 width=5) (actual time=0.104..0.368 rows=4276.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=75
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p6_sent_at_idx  (cost=0.00..106.32 rows=4203 width=0) (actual time=0.098..0.098 rows=4276.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=17
+              ->  Bitmap Heap Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=106.23..1098.59 rows=4091 width=5) (actual time=0.097..0.453 rows=4204.00 loops=1)
+                    Recheck Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                    Heap Blocks: exact=58
+                    Buffers: shared hit=76
+                    ->  Bitmap Index Scan on messages_hash_partitioned_p7_sent_at_idx  (cost=0.00..105.20 rows=4091 width=0) (actual time=0.087..0.088 rows=4204.00 loops=1)
+                          Index Cond: ((sent_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (sent_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Index Searches: 1
+                          Buffers: shared hit=18
+Planning:
+  Buffers: shared hit=952
+Planning Time: 3.631 ms
+Execution Time: 5.656 ms

@@ -1,0 +1,102 @@
+=== L07 hash_partitioned run 1 ===
+Limit  (cost=5841.30..5842.76 rows=25 width=32) (actual time=19.386..19.391 rows=25.00 loops=1)
+  Buffers: shared hit=1524 read=112
+  ->  Merge Append  (cost=2.46..35035.51 rows=600000 width=32) (actual time=0.093..17.278 rows=100025.00 loops=1)
+        Sort Key: messages_hash_partitioned.message_id DESC
+        Buffers: shared hit=1524 read=112
+        ->  Index Scan Backward using messages_hash_partitioned_p0_pkey on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..2884.59 rows=75086 width=32) (actual time=0.024..1.310 rows=12479.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=190 read=14
+        ->  Index Scan Backward using messages_hash_partitioned_p1_pkey on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..2901.12 rows=75522 width=32) (actual time=0.006..1.548 rows=12342.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=191 read=14
+        ->  Index Scan Backward using messages_hash_partitioned_p2_pkey on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..2865.48 rows=74679 width=32) (actual time=0.014..1.204 rows=12383.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=191 read=13
+        ->  Index Scan Backward using messages_hash_partitioned_p3_pkey on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..2858.86 rows=74437 width=32) (actual time=0.010..1.337 rows=12500.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=186 read=14
+        ->  Index Scan Backward using messages_hash_partitioned_p4_pkey on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..2865.17 rows=74658 width=32) (actual time=0.009..1.334 rows=12454.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=188 read=15
+        ->  Index Scan Backward using messages_hash_partitioned_p5_pkey on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..2863.06 rows=74584 width=32) (actual time=0.009..1.407 rows=12435.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=192 read=14
+        ->  Index Scan Backward using messages_hash_partitioned_p6_pkey on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..2891.58 rows=75352 width=32) (actual time=0.010..1.360 rows=12739.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=194 read=14
+        ->  Index Scan Backward using messages_hash_partitioned_p7_pkey on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..2905.53 rows=75682 width=32) (actual time=0.009..1.594 rows=12700.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=192 read=14
+Planning:
+  Buffers: shared hit=911
+Planning Time: 1.172 ms
+Execution Time: 19.421 ms
+=== L07 hash_partitioned run 2 ===
+Limit  (cost=5841.30..5842.76 rows=25 width=32) (actual time=16.681..16.685 rows=25.00 loops=1)
+  Buffers: shared hit=1636
+  ->  Merge Append  (cost=2.46..35035.51 rows=600000 width=32) (actual time=0.050..14.732 rows=100025.00 loops=1)
+        Sort Key: messages_hash_partitioned.message_id DESC
+        Buffers: shared hit=1636
+        ->  Index Scan Backward using messages_hash_partitioned_p0_pkey on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..2884.59 rows=75086 width=32) (actual time=0.008..1.157 rows=12479.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=204
+        ->  Index Scan Backward using messages_hash_partitioned_p1_pkey on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..2901.12 rows=75522 width=32) (actual time=0.003..1.052 rows=12342.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=205
+        ->  Index Scan Backward using messages_hash_partitioned_p2_pkey on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..2865.48 rows=74679 width=32) (actual time=0.009..1.102 rows=12383.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=204
+        ->  Index Scan Backward using messages_hash_partitioned_p3_pkey on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..2858.86 rows=74437 width=32) (actual time=0.005..1.244 rows=12500.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=200
+        ->  Index Scan Backward using messages_hash_partitioned_p4_pkey on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..2865.17 rows=74658 width=32) (actual time=0.007..1.105 rows=12454.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=203
+        ->  Index Scan Backward using messages_hash_partitioned_p5_pkey on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..2863.06 rows=74584 width=32) (actual time=0.005..1.120 rows=12435.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=206
+        ->  Index Scan Backward using messages_hash_partitioned_p6_pkey on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..2891.58 rows=75352 width=32) (actual time=0.006..1.103 rows=12739.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=208
+        ->  Index Scan Backward using messages_hash_partitioned_p7_pkey on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..2905.53 rows=75682 width=32) (actual time=0.007..1.263 rows=12700.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=206
+Planning:
+  Buffers: shared hit=911
+Planning Time: 1.931 ms
+Execution Time: 16.717 ms
+=== L07 hash_partitioned run 3 ===
+Limit  (cost=5841.30..5842.76 rows=25 width=32) (actual time=26.059..26.063 rows=25.00 loops=1)
+  Buffers: shared hit=1636
+  ->  Merge Append  (cost=2.46..35035.51 rows=600000 width=32) (actual time=0.080..23.380 rows=100025.00 loops=1)
+        Sort Key: messages_hash_partitioned.message_id DESC
+        Buffers: shared hit=1636
+        ->  Index Scan Backward using messages_hash_partitioned_p0_pkey on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.29..2884.59 rows=75086 width=32) (actual time=0.026..1.564 rows=12479.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=204
+        ->  Index Scan Backward using messages_hash_partitioned_p1_pkey on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.29..2901.12 rows=75522 width=32) (actual time=0.005..1.990 rows=12342.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=205
+        ->  Index Scan Backward using messages_hash_partitioned_p2_pkey on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.29..2865.48 rows=74679 width=32) (actual time=0.010..2.109 rows=12383.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=204
+        ->  Index Scan Backward using messages_hash_partitioned_p3_pkey on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.29..2858.86 rows=74437 width=32) (actual time=0.006..2.144 rows=12500.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=200
+        ->  Index Scan Backward using messages_hash_partitioned_p4_pkey on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.29..2865.17 rows=74658 width=32) (actual time=0.009..1.849 rows=12454.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=203
+        ->  Index Scan Backward using messages_hash_partitioned_p5_pkey on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.29..2863.06 rows=74584 width=32) (actual time=0.007..1.785 rows=12435.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=206
+        ->  Index Scan Backward using messages_hash_partitioned_p6_pkey on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.29..2891.58 rows=75352 width=32) (actual time=0.008..2.245 rows=12739.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=208
+        ->  Index Scan Backward using messages_hash_partitioned_p7_pkey on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.29..2905.53 rows=75682 width=32) (actual time=0.010..1.651 rows=12700.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=206
+Planning:
+  Buffers: shared hit=911
+Planning Time: 6.058 ms
+Execution Time: 26.331 ms

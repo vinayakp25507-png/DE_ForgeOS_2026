@@ -1,0 +1,99 @@
+=== L06 hash_partitioned run 1 ===
+Limit  (cost=20238.72..20238.77 rows=20 width=16) (actual time=133.456..133.459 rows=20.00 loops=1)
+  Buffers: shared hit=7380
+  ->  Sort  (cost=20238.72..20297.56 rows=23538 width=16) (actual time=133.421..133.423 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=7380
+        ->  HashAggregate  (cost=19377.00..19612.38 rows=23538 width=16) (actual time=129.693..132.053 rows=28413.00 loops=1)
+              Group Key: messages_hash_partitioned.sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=7377
+              ->  Append  (cost=0.00..16377.00 rows=600000 width=8) (actual time=0.501..56.509 rows=600000.00 loops=1)
+                    Buffers: shared hit=7377
+                    ->  Seq Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.00..1673.86 rows=75086 width=8) (actual time=0.501..7.313 rows=75086.00 loops=1)
+                          Buffers: shared hit=923
+                    ->  Seq Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.00..1684.22 rows=75522 width=8) (actual time=0.031..4.192 rows=75522.00 loops=1)
+                          Buffers: shared hit=929
+                    ->  Seq Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.00..1664.79 rows=74679 width=8) (actual time=0.014..2.990 rows=74679.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.00..1659.37 rows=74437 width=8) (actual time=0.012..4.019 rows=74437.00 loops=1)
+                          Buffers: shared hit=915
+                    ->  Seq Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.00..1664.58 rows=74658 width=8) (actual time=0.013..3.780 rows=74658.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.00..1662.84 rows=74584 width=8) (actual time=0.023..4.017 rows=74584.00 loops=1)
+                          Buffers: shared hit=917
+                    ->  Seq Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.00..1679.52 rows=75352 width=8) (actual time=0.011..3.799 rows=75352.00 loops=1)
+                          Buffers: shared hit=926
+                    ->  Seq Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.00..1687.82 rows=75682 width=8) (actual time=0.009..2.934 rows=75682.00 loops=1)
+                          Buffers: shared hit=931
+Planning:
+  Buffers: shared hit=853
+Planning Time: 15.832 ms
+Execution Time: 137.195 ms
+=== L06 hash_partitioned run 2 ===
+Limit  (cost=20238.72..20238.77 rows=20 width=16) (actual time=102.916..102.921 rows=20.00 loops=1)
+  Buffers: shared hit=7380
+  ->  Sort  (cost=20238.72..20297.56 rows=23538 width=16) (actual time=102.915..102.919 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=7380
+        ->  HashAggregate  (cost=19377.00..19612.38 rows=23538 width=16) (actual time=100.878..102.073 rows=28413.00 loops=1)
+              Group Key: messages_hash_partitioned.sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=7377
+              ->  Append  (cost=0.00..16377.00 rows=600000 width=8) (actual time=0.004..48.628 rows=600000.00 loops=1)
+                    Buffers: shared hit=7377
+                    ->  Seq Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.00..1673.86 rows=75086 width=8) (actual time=0.004..3.223 rows=75086.00 loops=1)
+                          Buffers: shared hit=923
+                    ->  Seq Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.00..1684.22 rows=75522 width=8) (actual time=0.008..3.360 rows=75522.00 loops=1)
+                          Buffers: shared hit=929
+                    ->  Seq Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.00..1664.79 rows=74679 width=8) (actual time=0.028..3.451 rows=74679.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.00..1659.37 rows=74437 width=8) (actual time=0.011..3.346 rows=74437.00 loops=1)
+                          Buffers: shared hit=915
+                    ->  Seq Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.00..1664.58 rows=74658 width=8) (actual time=0.027..3.252 rows=74658.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.00..1662.84 rows=74584 width=8) (actual time=0.037..3.746 rows=74584.00 loops=1)
+                          Buffers: shared hit=917
+                    ->  Seq Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.00..1679.52 rows=75352 width=8) (actual time=0.010..3.288 rows=75352.00 loops=1)
+                          Buffers: shared hit=926
+                    ->  Seq Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.00..1687.82 rows=75682 width=8) (actual time=0.014..3.440 rows=75682.00 loops=1)
+                          Buffers: shared hit=931
+Planning:
+  Buffers: shared hit=853
+Planning Time: 1.226 ms
+Execution Time: 103.077 ms
+=== L06 hash_partitioned run 3 ===
+Limit  (cost=20238.72..20238.77 rows=20 width=16) (actual time=102.788..102.793 rows=20.00 loops=1)
+  Buffers: shared hit=7380
+  ->  Sort  (cost=20238.72..20297.56 rows=23538 width=16) (actual time=102.787..102.791 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=7380
+        ->  HashAggregate  (cost=19377.00..19612.38 rows=23538 width=16) (actual time=99.939..101.746 rows=28413.00 loops=1)
+              Group Key: messages_hash_partitioned.sender_id
+              Batches: 1  Memory Usage: 2329kB
+              Buffers: shared hit=7377
+              ->  Append  (cost=0.00..16377.00 rows=600000 width=8) (actual time=0.007..48.680 rows=600000.00 loops=1)
+                    Buffers: shared hit=7377
+                    ->  Seq Scan on messages_hash_partitioned_p0 messages_hash_partitioned_1  (cost=0.00..1673.86 rows=75086 width=8) (actual time=0.007..3.487 rows=75086.00 loops=1)
+                          Buffers: shared hit=923
+                    ->  Seq Scan on messages_hash_partitioned_p1 messages_hash_partitioned_2  (cost=0.00..1684.22 rows=75522 width=8) (actual time=0.013..3.496 rows=75522.00 loops=1)
+                          Buffers: shared hit=929
+                    ->  Seq Scan on messages_hash_partitioned_p2 messages_hash_partitioned_3  (cost=0.00..1664.79 rows=74679 width=8) (actual time=0.017..3.328 rows=74679.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p3 messages_hash_partitioned_4  (cost=0.00..1659.37 rows=74437 width=8) (actual time=0.011..3.411 rows=74437.00 loops=1)
+                          Buffers: shared hit=915
+                    ->  Seq Scan on messages_hash_partitioned_p4 messages_hash_partitioned_5  (cost=0.00..1664.58 rows=74658 width=8) (actual time=0.019..3.124 rows=74658.00 loops=1)
+                          Buffers: shared hit=918
+                    ->  Seq Scan on messages_hash_partitioned_p5 messages_hash_partitioned_6  (cost=0.00..1662.84 rows=74584 width=8) (actual time=0.019..3.709 rows=74584.00 loops=1)
+                          Buffers: shared hit=917
+                    ->  Seq Scan on messages_hash_partitioned_p6 messages_hash_partitioned_7  (cost=0.00..1679.52 rows=75352 width=8) (actual time=0.019..3.219 rows=75352.00 loops=1)
+                          Buffers: shared hit=926
+                    ->  Seq Scan on messages_hash_partitioned_p7 messages_hash_partitioned_8  (cost=0.00..1687.82 rows=75682 width=8) (actual time=0.010..3.572 rows=75682.00 loops=1)
+                          Buffers: shared hit=931
+Planning:
+  Buffers: shared hit=853
+Planning Time: 1.256 ms
+Execution Time: 102.894 ms
