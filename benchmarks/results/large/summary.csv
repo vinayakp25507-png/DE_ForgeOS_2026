@@ -1,0 +1,17 @@
+query_id,storage,row_count,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+L01,unpartitioned,600000,0.237,0.079,0.076,0.557,Index Scan
+L02,unpartitioned,600000,7.558,5.132,4.553,12.990,Bitmap Heap Scan|Bitmap Index Scan|HashAggregate|Sort
+L03,unpartitioned,600000,40.026,39.428,37.195,43.456,HashAggregate|Parallel Seq Scan|Sort
+L04,unpartitioned,600000,0.044,0.045,0.041,0.046,Index Scan|Sort
+L05,unpartitioned,600000,29.781,28.961,27.583,32.798,GroupAggregate|HashAggregate|Parallel Seq Scan|Sort
+L06,unpartitioned,600000,67.931,67.132,62.422,74.239,HashAggregate|Seq Scan|Sort
+L07,unpartitioned,600000,14.562,10.199,8.510,24.978,Index Scan
+L08,unpartitioned,600000,40.903,42.024,36.347,44.337,HashAggregate|Parallel Seq Scan|Sort
+L01,hash_partitioned,600000,0.692,0.571,0.427,1.078,Bitmap Heap Scan|Bitmap Index Scan|Sort
+L02,hash_partitioned,600000,9.377,7.569,5.656,14.905,Bitmap Heap Scan|Bitmap Index Scan|HashAggregate|Sort
+L03,hash_partitioned,600000,51.484,46.325,44.902,63.226,HashAggregate|Parallel Seq Scan|Sort
+L04,hash_partitioned,600000,0.087,0.081,0.080,0.099,Index Scan|Sort
+L05,hash_partitioned,600000,39.018,40.169,32.329,44.555,GroupAggregate|HashAggregate|Parallel Seq Scan|Sort
+L06,hash_partitioned,600000,114.389,103.077,102.894,137.195,HashAggregate|Seq Scan|Sort
+L07,hash_partitioned,600000,20.823,19.421,16.717,26.331,Index Scan|Sort
+L08,hash_partitioned,600000,57.906,62.448,46.481,64.788,HashAggregate|Parallel Seq Scan|Sort
