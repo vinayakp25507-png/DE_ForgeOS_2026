@@ -1,0 +1,87 @@
+=== R08 run 1 ===
+Limit  (cost=4483.05..4540.04 rows=500 width=24) (actual time=37.594..38.582 rows=500.00 loops=1)
+  Buffers: shared hit=3711 dirtied=12
+  ->  Gather Merge  (cost=4483.05..5047.66 rows=4954 width=24) (actual time=37.593..38.550 rows=500.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=3711 dirtied=12
+        ->  Sort  (cost=3483.04..3490.33 rows=2914 width=24) (actual time=34.449..34.456 rows=377.00 loops=2)
+              Sort Key: m.sent_at
+              Sort Method: top-N heapsort  Memory: 60kB
+              Buffers: shared hit=3711 dirtied=12
+              Worker 0:  Sort Method: top-N heapsort  Memory: 60kB
+              ->  Hash Join  (cost=216.52..3337.84 rows=2914 width=24) (actual time=27.842..34.246 rows=2524.00 loops=2)
+                    Hash Cond: (m.message_id = r.message_id)
+                    Buffers: shared hit=3703 dirtied=12
+                    ->  Parallel Seq Scan on messages m  (cost=0.00..2386.35 rows=70583 width=16) (actual time=0.007..4.074 rows=59995.50 loops=2)
+                          Filter: (sent_at < '2026-06-30 23:00:00+05:30'::timestamp with time zone)
+                          Rows Removed by Filter: 4
+                          Buffers: shared hit=1504
+                    ->  Hash  (cost=154.59..154.59 rows=4954 width=16) (actual time=27.777..27.777 rows=5076.00 loops=2)
+                          Buckets: 8192  Batches: 1  Memory Usage: 302kB
+                          Buffers: shared hit=2199 dirtied=12
+                          ->  Index Scan using idx_receipts_undelivered_message on message_receipts r  (cost=0.29..154.59 rows=4954 width=16) (actual time=0.408..27.329 rows=5076.00 loops=2)
+                                Index Searches: 2
+                                Buffers: shared hit=2199 dirtied=12
+Planning:
+  Buffers: shared hit=304
+Planning Time: 0.514 ms
+Execution Time: 38.832 ms
+=== R08 run 2 ===
+Limit  (cost=4483.05..4540.04 rows=500 width=24) (actual time=8.362..11.208 rows=500.00 loops=1)
+  Buffers: shared hit=3617
+  ->  Gather Merge  (cost=4483.05..5047.66 rows=4954 width=24) (actual time=8.361..11.020 rows=500.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=3617
+        ->  Sort  (cost=3483.04..3490.33 rows=2914 width=24) (actual time=6.712..6.728 rows=500.00 loops=2)
+              Sort Key: m.sent_at
+              Sort Method: top-N heapsort  Memory: 60kB
+              Buffers: shared hit=3617
+              Worker 0:  Sort Method: top-N heapsort  Memory: 60kB
+              ->  Hash Join  (cost=216.52..3337.84 rows=2914 width=24) (actual time=2.103..6.562 rows=2524.00 loops=2)
+                    Hash Cond: (m.message_id = r.message_id)
+                    Buffers: shared hit=3609
+                    ->  Parallel Seq Scan on messages m  (cost=0.00..2386.35 rows=70583 width=16) (actual time=0.003..2.562 rows=59995.50 loops=2)
+                          Filter: (sent_at < '2026-06-30 23:00:00+05:30'::timestamp with time zone)
+                          Rows Removed by Filter: 4
+                          Buffers: shared hit=1504
+                    ->  Hash  (cost=154.59..154.59 rows=4954 width=16) (actual time=2.080..2.081 rows=5076.00 loops=2)
+                          Buckets: 8192  Batches: 1  Memory Usage: 302kB
+                          Buffers: shared hit=2105
+                          ->  Index Scan using idx_receipts_undelivered_message on message_receipts r  (cost=0.29..154.59 rows=4954 width=16) (actual time=0.021..1.684 rows=5076.00 loops=2)
+                                Index Searches: 2
+                                Buffers: shared hit=2105
+Planning:
+  Buffers: shared hit=304
+Planning Time: 0.508 ms
+Execution Time: 11.257 ms
+=== R08 run 3 ===
+Limit  (cost=4483.05..4540.04 rows=500 width=24) (actual time=7.316..8.331 rows=500.00 loops=1)
+  Buffers: shared hit=3617
+  ->  Gather Merge  (cost=4483.05..5047.66 rows=4954 width=24) (actual time=7.316..8.313 rows=500.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=3617
+        ->  Sort  (cost=3483.04..3490.33 rows=2914 width=24) (actual time=6.393..6.406 rows=496.50 loops=2)
+              Sort Key: m.sent_at
+              Sort Method: top-N heapsort  Memory: 60kB
+              Buffers: shared hit=3617
+              Worker 0:  Sort Method: top-N heapsort  Memory: 60kB
+              ->  Hash Join  (cost=216.52..3337.84 rows=2914 width=24) (actual time=1.298..6.214 rows=2524.00 loops=2)
+                    Hash Cond: (m.message_id = r.message_id)
+                    Buffers: shared hit=3609
+                    ->  Parallel Seq Scan on messages m  (cost=0.00..2386.35 rows=70583 width=16) (actual time=0.004..2.776 rows=59995.50 loops=2)
+                          Filter: (sent_at < '2026-06-30 23:00:00+05:30'::timestamp with time zone)
+                          Rows Removed by Filter: 4
+                          Buffers: shared hit=1504
+                    ->  Hash  (cost=154.59..154.59 rows=4954 width=16) (actual time=1.282..1.282 rows=5076.00 loops=2)
+                          Buckets: 8192  Batches: 1  Memory Usage: 302kB
+                          Buffers: shared hit=2105
+                          ->  Index Scan using idx_receipts_undelivered_message on message_receipts r  (cost=0.29..154.59 rows=4954 width=16) (actual time=0.017..1.062 rows=5076.00 loops=2)
+                                Index Searches: 2
+                                Buffers: shared hit=2105
+Planning:
+  Buffers: shared hit=304
+Planning Time: 0.564 ms
+Execution Time: 8.369 ms
