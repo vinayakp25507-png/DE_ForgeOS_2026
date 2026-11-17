@@ -4,6 +4,7 @@ SET search_path TO whatsapp;
 DO $$
 DECLARE failures BIGINT;
 BEGIN
+    -- A recorded read requires a delivery timestamp and cannot precede delivery.
     SELECT COUNT(*) INTO failures
     FROM (
 
@@ -21,3 +22,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Receipt integrity';
 END $$;
+
+-- File use case: validate message/recipient references and receipt chronology.
+-- failures counts orphan rows, reads without delivery, or reversed timestamps.

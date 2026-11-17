@@ -11,3 +11,6 @@ UNION ALL SELECT 'message_receipts', COUNT(*) FROM message_receipts
 UNION ALL SELECT 'calls', COUNT(*) FROM calls
 UNION ALL SELECT 'blocked_users', COUNT(*) FROM blocked_users
 ORDER BY table_name;
+
+-- File use case: read-only row-count summary for all nine loaded tables.
+-- The UNION ALL keeps one count per table; it does not change database state.

@@ -29,3 +29,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Unique phone constraint';
 END $$;
+
+-- File use case: ensure phone_e164 remains the sole additional UNIQUE
+-- constraint on users; failures covers both count and column ownership.

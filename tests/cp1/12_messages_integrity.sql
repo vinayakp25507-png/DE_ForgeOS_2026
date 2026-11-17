@@ -4,6 +4,7 @@ SET search_path TO whatsapp;
 DO $$
 DECLARE failures BIGINT;
 BEGIN
+    -- Nullable references are checked only when present; deleted messages must clear body text.
     SELECT COUNT(*) INTO failures
     FROM (
 
@@ -28,3 +29,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Message integrity';
 END $$;
+
+-- File use case: validate message references/types and deletion, edit, and
+-- reply rules; failures counts messages that violate any listed invariant.

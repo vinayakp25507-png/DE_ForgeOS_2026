@@ -20,3 +20,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Fifteen foreign keys';
 END $$;
+
+-- File use case: verify that the whatsapp schema retains all 15 expected
+-- foreign-key constraints; failures is the catalog-count mismatch indicator.

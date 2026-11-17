@@ -23,3 +23,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Forty-six NOT NULL columns';
 END $$;
+
+-- File use case: guard the expected count of required (NOT NULL) attributes.
+-- failures is set from PostgreSQL's live catalog, not from table data.

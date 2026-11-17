@@ -20,3 +20,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Blocked user integrity';
 END $$;
+
+-- File use case: validate both user references and prohibit self-blocking.
+-- failures counts invalid directed blocker/blocked pairs.

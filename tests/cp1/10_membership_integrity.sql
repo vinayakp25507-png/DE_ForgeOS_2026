@@ -21,3 +21,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Chat membership integrity';
 END $$;
+
+-- File use case: validate membership references, roles, and join/leave order.
+-- failures counts rows that violate any membership rule.

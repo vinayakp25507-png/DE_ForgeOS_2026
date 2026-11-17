@@ -21,3 +21,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Media metadata integrity';
 END $$;
+
+-- File use case: validate uploader references, media categories, positive
+-- sizes, and 64-character hexadecimal hashes; failures counts bad rows.

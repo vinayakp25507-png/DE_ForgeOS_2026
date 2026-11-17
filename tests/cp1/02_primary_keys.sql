@@ -32,3 +32,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Primary keys';
 END $$;
+
+-- File use case: guard the nine-table primary-key design against schema drift.
+-- failures counts a wrong PK total or a required table without a primary key.

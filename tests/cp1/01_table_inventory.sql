@@ -30,3 +30,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Nine required tables';
 END $$;
+
+-- File use case: catch missing or unexpected base tables in whatsapp.
+-- failures counts both a wrong table total and any absent required table name.

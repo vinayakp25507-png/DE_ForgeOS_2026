@@ -21,3 +21,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Device data integrity';
 END $$;
+
+-- File use case: validate device ownership, allowed platform/version values,
+-- and registration/activity timestamp order; failures counts invalid rows.

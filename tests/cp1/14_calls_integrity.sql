@@ -25,3 +25,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Call integrity';
 END $$;
+
+-- File use case: validate call references, types/statuses, and event ordering.
+-- failures counts calls with a missing parent or invalid timeline.

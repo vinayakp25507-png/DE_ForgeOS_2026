@@ -25,3 +25,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: User data integrity';
 END $$;
+
+-- File use case: validate positive user IDs, E.164 phone formatting,
+-- nonblank display names, and phone uniqueness; failures counts bad rows.

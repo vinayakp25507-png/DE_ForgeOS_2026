@@ -4,6 +4,7 @@ SET search_path TO whatsapp;
 DO $$
 DECLARE failures BIGINT;
 BEGIN
+    -- This count is a schema-drift guard; entity tests check representative row rules.
     SELECT COUNT(*) INTO failures
     FROM (
 
@@ -20,3 +21,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Thirty CHECK constraints';
 END $$;
+
+-- File use case: verify the expected CHECK-constraint count. failures signals
+-- count drift; per-entity integrity scripts exercise representative row rules.

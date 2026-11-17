@@ -22,3 +22,6 @@ BEGIN
 
     RAISE NOTICE 'PASS: Chat data integrity';
 END $$;
+
+-- File use case: validate chat creators, DIRECT/GROUP types, and the rule
+-- that only groups have a nonblank group_name; failures counts bad chats.
