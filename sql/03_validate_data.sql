@@ -119,3 +119,7 @@ GROUP BY is_deleted
 ORDER BY is_deleted;
 
 \echo '========== VALIDATION COMPLETE =========='
+
+-- File use case: report table counts, orphan foreign keys, and message NULL
+-- patterns after loading. The CTE counts violations; these queries do not
+-- modify data or assert that every optional field must be populated.

@@ -44,3 +44,7 @@ BEGIN
 
     RAISE NOTICE 'PASS: All expected constraints verified.';
 END $$;
+
+-- File use case: fail fast if the live schema's constraint inventory drifts
+-- from the expected design. In the DO block, t/pk/fk/ck/uq/nn hold catalog
+-- counts for tables, keys, checks, uniqueness, and NOT NULL attributes.

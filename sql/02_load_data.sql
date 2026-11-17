@@ -34,3 +34,7 @@ SET search_path TO whatsapp;
 COMMIT;
 
 \echo 'All nine CSV files loaded successfully.'
+
+-- File use case: load the local seed_data CSVs after schema creation.
+-- The command order loads referenced parent rows before dependent child rows;
+-- the surrounding transaction prevents a partially loaded dataset.

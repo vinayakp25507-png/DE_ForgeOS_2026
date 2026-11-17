@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS whatsapp;
 SET search_path TO whatsapp;
 
+-- Keep account identity in one table; the other entities reference user_id.
 CREATE TABLE users (
     user_id BIGINT PRIMARY KEY CHECK (user_id > 0),
     phone_e164 VARCHAR(16) NOT NULL UNIQUE CHECK (phone_e164 ~ '^\+[1-9][0-9]{1,14}$'),
@@ -32,6 +33,8 @@ CREATE TABLE chats (
         OR (chat_type = 'DIRECT' AND group_name IS NULL))
 );
 
+-- This bridge represents the many-to-many chat/user relationship. left_at keeps
+-- former memberships so historical messages can still be interpreted.
 CREATE TABLE chat_members (
     chat_id BIGINT NOT NULL REFERENCES chats(chat_id) ON DELETE RESTRICT,
     user_id BIGINT NOT NULL REFERENCES users(user_id) ON DELETE RESTRICT,
@@ -53,6 +56,8 @@ CREATE TABLE media (
     uploaded_at TIMESTAMPTZ NOT NULL
 );
 
+-- Message content is separate from media metadata and recipient-specific receipts.
+-- reply_to_message_id is a self-reference that supports reply threads.
 CREATE TABLE messages (
     message_id BIGINT PRIMARY KEY CHECK (message_id > 0),
     chat_id BIGINT NOT NULL REFERENCES chats(chat_id) ON DELETE RESTRICT,
@@ -70,6 +75,7 @@ CREATE TABLE messages (
     CHECK (reply_to_message_id IS NULL OR reply_to_message_id <> message_id)
 );
 
+-- One row per message recipient; NULL timestamps represent pending delivery/read states.
 CREATE TABLE message_receipts (
     message_id BIGINT NOT NULL REFERENCES messages(message_id) ON DELETE RESTRICT,
     user_id BIGINT NOT NULL REFERENCES users(user_id) ON DELETE RESTRICT,
@@ -100,3 +106,7 @@ CREATE TABLE blocked_users (
     PRIMARY KEY (blocker_id, blocked_id),
     CHECK (blocker_id <> blocked_id)
 );
+
+-- File use case: create the normalized nine-table WhatsApp schema and its
+-- integrity rules. The composite keys identify memberships, receipts, and
+-- directed block pairs; foreign keys connect the entities described above.
