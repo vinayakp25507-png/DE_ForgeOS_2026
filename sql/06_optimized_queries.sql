@@ -97,6 +97,7 @@ LIMIT 20;
 
 -- @R10
 -- Growth: daily active senders in June 2026
+-- A half-open timestamp range includes all of June and keeps sent_at indexable.
 SELECT sent_at::date AS day, count(DISTINCT sender_id) AS active_senders, count(*) AS messages
 FROM messages
 WHERE sent_at >= TIMESTAMPTZ '2026-06-01 00:00:00+05:30' AND sent_at < TIMESTAMPTZ '2026-07-01 00:00:00+05:30'
@@ -124,6 +125,7 @@ ORDER BY forwarded DESC, sender_id;
 
 -- @R13
 -- Group admins: questions asked in group 20501 that nobody has replied to
+-- NOT EXISTS avoids NOT IN's NULL behavior when other messages have no reply target.
 SELECT m.message_id, m.sender_id, m.sent_at, m.body
 FROM messages m
 WHERE m.chat_id = 20501
@@ -175,6 +177,8 @@ ORDER BY u.last_seen_at;
 
 -- @R19
 -- Group health report: for every group, the last message time and messages in June 2026
+-- Aggregate once per chat instead of rescanning messages with correlated subqueries.
+-- The LEFT JOIN retains groups with no messages; COALESCE reports their June count as zero.
 WITH message_stats AS (
     SELECT chat_id,
            MAX(sent_at) AS last_message_at,
@@ -279,3 +283,8 @@ WHERE chat_id = 20898 AND user_id = 965 AND left_at IS NULL;
 
 -- @END
 ROLLBACK;
+
+-- File use case: benchmark the optimized 25-read/5-write workload; marker
+-- comments identify queries to the runner and ROLLBACK keeps write tests safe.
+-- The substantive rewrites are R10's timestamp range, R13's NULL-safe
+-- NOT EXISTS, and R19's per-chat pre-aggregation.

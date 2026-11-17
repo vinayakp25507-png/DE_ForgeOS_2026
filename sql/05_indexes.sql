@@ -35,3 +35,7 @@ WHERE status = 'MISSED';
 CREATE INDEX IF NOT EXISTS idx_devices_web_desktop_activity
 ON whatsapp.devices (last_active_at)
 WHERE device_type IN ('WEB', 'DESKTOP');
+
+-- File use case: add the CP3 workload indexes after the baseline run.
+-- The query labels above explain each access path; indexes trade storage and
+-- faster reads for additional maintenance on inserts and updates.
