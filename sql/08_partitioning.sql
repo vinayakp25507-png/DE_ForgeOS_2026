@@ -130,3 +130,8 @@ ORDER BY partition_name;
 
 SELECT pg_size_pretty(pg_total_relation_size('whatsapp.messages_unpartitioned_large')) AS unpartitioned_size,
        pg_size_pretty(pg_total_relation_size('whatsapp.messages_hash_partitioned')) AS partitioned_size;
+
+-- File use case: compare isolated 5x unpartitioned and HASH(message_id)
+-- benchmark copies without changing whatsapp.messages. The replica loop
+-- offsets IDs/reply pointers and shifts timestamps; p0-p7 are the eight
+-- hash partitions whose row counts and relation sizes are reported above.
