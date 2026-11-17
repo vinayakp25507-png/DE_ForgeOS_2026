@@ -9,6 +9,7 @@
 | Path | What it is |
 |------|------------|
 | `README.md` | This project brief |
+| `docs/VIVA_GUIDE.md` | Project walkthrough, design rationale, and viva review questions |
 | `seed_data.zip` | 9 CSV files (120,000 messages): the only input for Phase 2. Unzip it to get `seed_data/` |
 | `queries/workload_30.sql` | The 30 queries for Phase 3 (do not edit) |
 | `benchmarks/run_benchmark.sh` | Timing script: 3 runs per query, average, raw plans saved |
