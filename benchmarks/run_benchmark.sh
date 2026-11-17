@@ -60,3 +60,8 @@ done
 rm -rf "$TMP"
 echo "Workload: $WORKLOAD"
 echo "Saved raw plans and summary to $OUT"
+
+# File use case: run the marked baseline/optimized workload and save raw plans
+# plus summary.csv. DB/PHASE/RUNS select the run; ROOT/WORKLOAD/OUT/SUMMARY/TMP
+# locate inputs and outputs. The loop variables collect each query's plan,
+# timings, scan nodes, and aggregate statistics; this script defines no function.

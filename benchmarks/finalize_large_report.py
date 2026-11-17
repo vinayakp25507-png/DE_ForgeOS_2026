@@ -41,3 +41,7 @@ report = root / "docs/05_scalability_report.md"
 report.parent.mkdir(parents=True, exist_ok=True)
 report.write_text("\n".join(lines))
 print(f"Wrote {report.relative_to(root)} from {len(rows)} measured benchmark rows.")
+
+# File use case: validate paired CP4 measurements and render the scalability
+# report. root locates the repo; summary/rows read CSV data; by_key/queries
+# validate and group pairs; lines builds Markdown; report is the output path.

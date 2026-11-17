@@ -46,3 +46,7 @@ for table in messages_unpartitioned_large messages_hash_partitioned; do
 done
 
 echo "Saved large-scale benchmark summary and 48 raw plans to $OUT"
+
+# File use case: compare L01-L08 on the two large-data copies and save paired
+# plans/timings. DB/ROOT/OUT/SUMMARY configure the run; run_one(id, storage,
+# table, sql) gathers plan, times, scan nodes, and row_count for each pair.
